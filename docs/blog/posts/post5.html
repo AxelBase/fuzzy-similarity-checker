@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AxelBase – Fuzzy Similarity Checker</title>
+    <meta name="description" content="Free, private, instant fuzzy text similarity checker – 100% client-side, no data sent anywhere." />
+    <meta property="og:title" content="AxelBase – Fuzzy Similarity Checker" />
+    <meta property="og:description" content="Compare two texts instantly with fuzzy matching – completely private and offline." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    
+		<link href="../../_app/immutable/assets/0.Cc2-KQMX.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/9.BNtDu1TE.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.CEDBot2z.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Dhz8LpAe.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Kjd7erCy.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/OhTQer22.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/X1jm211d.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.D-yciotx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DHv6QwYn.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/5uJCp7AU.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DEXc99c3.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TehEmrgb.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DXPk2-_f.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/ch5BLKea.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B0D8511z.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CEiWiXqk.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BNUXq84S.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DgdDK52b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/9.DLHUw_E-.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CaXyZev3.js"><!--1li990r--><meta name="description" content="How to safely validate usernames, comments, or messages against prohibited terms without ever exposing user data to a server."/> <meta property="og:title" content="Private Blocklist Checking with Client-Side Fuzzy Matching | AxelBase"/> <meta property="og:description" content="How to safely validate usernames, comments, or messages against prohibited terms without ever exposing user data to a server."/> <meta property="og:url" content="../../blog/posts/post5"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>Private Blocklist Checking with Client-Side Fuzzy Matching | AxelBase</title>
+  </head>
+  <body data-bs-theme="light">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="fixed-top p-3 w-100 svelte-12qhfyh" style="pointer-events: none; z-index: 1040;"><nav class="container glass rounded-pill px-4 py-2 d-flex justify-content-between align-items-center shadow-sm svelte-12qhfyh" style="pointer-events: auto;"><div class="d-flex align-items-center gap-3 svelte-12qhfyh"><a href="../../" class="d-flex align-items-center gap-2 logo-group text-decoration-none svelte-12qhfyh"><div class="logo-wrapper svelte-12qhfyh"><img src="../../AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-brand-logo svelte-12qhfyh"/></div> <span class="fw-bold fs-5 brand-text svelte-12qhfyh">AxelBase</span></a> <div class="position-relative ms-2 d-none d-sm-block svelte-12qhfyh"><button class="btn btn-coffee d-flex align-items-center gap-2 svelte-12qhfyh" aria-label="Support this project"><i class="bi bi-cup-hot-fill coffee-icon svelte-12qhfyh"></i> <span class="d-none d-md-inline svelte-12qhfyh">Buy me a coffee</span></button> <!--[!--><!--]--></div></div> <div class="d-flex align-items-center gap-3 svelte-12qhfyh"><ul class="nav d-none d-lg-flex align-items-center gap-1 m-0 svelte-12qhfyh"><li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../">Home</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#about">About</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#howto">How to</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#faq">FAQ</a></li> <li class="nav-item ms-2 svelte-12qhfyh"><a class="btn btn-primary rounded-pill px-4 fw-semibold svelte-12qhfyh" href="../../blog">Blog</a></li></ul> <button class="btn btn-outline-secondary btn-theme-toggle svelte-12qhfyh" aria-label="Toggle dark mode"><!--[!--><i class="bi bi-moon-stars-fill svelte-12qhfyh"></i><!--]--></button> <button class="navbar-toggler d-lg-none border-0 bg-transparent svelte-12qhfyh" type="button" aria-label="Toggle navigation menu"><i class="bi bi-list fs-2 svelte-12qhfyh" style="color: var(--color-accent);"></i></button></div></nav></header> <main class="flex-grow-1 svelte-12qhfyh"><div class="container container-main mx-auto svelte-12qhfyh"><!--[--><!----><div class="container fade-in post-layout svelte-1li990r"><div class="breadcrumbs svelte-1li990r"><a href="../../blog" class="svelte-1li990r">Blog</a> <span>/</span> <p>Private Blocklist Checking</p></div> <article class="prose svelte-1li990r"><h1 class="svelte-1li990r">Private Blocklist Checking with Client-Side Fuzzy Matching</h1> <p class="post-meta svelte-1li990r">Published: December 5, 2025</p> <p class="svelte-1li990r">Many platforms maintain internal blocklists of banned usernames, slurs, drug terms, or brand impersonations. Sending every user message to a server for checking creates serious privacy and legal risks. Client-side fuzzy checking solves this elegantly.</p> <p class="svelte-1li990r">You load the sensitive blocklist once (locally, encrypted if needed), then every new message is compared entirely in the browser. Nothing leaves the user’s device.</p> <h2 class="svelte-1li990r">Common Scenarios</h2> <ul class="svelte-1li990r"><li>Preventing new account creation with variations of banned usernames</li> <li>Blocking coded drug sales language (“710 friendly”, “420”, etc.)</li> <li>Stopping brand impersonation (“PayPal-Support”, “Amazon Help”)</li> <li>Filtering harassment that uses spaces or symbols to bypass filters</li></ul> <p class="svelte-1li990r">Partial Ratio shines here because banned terms are usually short and appear inside longer text. A score above 90% is almost always a hit, even with deliberate obfuscation.</p> <p class="svelte-1li990r">Because everything happens in the browser, compliance teams avoid storing or logging user content while still maintaining strong protection. This approach is now used by several privacy-focused chat apps and forums.</p> <p class="italic-note svelte-1li990r">Privacy and safety are not mutually exclusive when the right tools are used correctly.</p></article></div><!----><!--]--></div></main> <footer class="relative glass border-top py-3 mt-5 svelte-12qhfyh" style="z-index: 1030;"><div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted svelte-12qhfyh"><span class="svelte-12qhfyh">© 2025 AxelBase Fuzzy Similarity Checker</span> <div class="d-flex gap-3 mt-1 mt-sm-0 svelte-12qhfyh"><a href="../../privacy" class="footer-link svelte-12qhfyh">Privacy</a> <a href="../../terms" class="footer-link svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1t6cp98 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/fuzzy-similarity-checker"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.CEDBot2z.js"),
+						import("../../_app/immutable/entry/app.D-yciotx.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 9],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

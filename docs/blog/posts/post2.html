@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AxelBase – Fuzzy Similarity Checker</title>
+    <meta name="description" content="Free, private, instant fuzzy text similarity checker – 100% client-side, no data sent anywhere." />
+    <meta property="og:title" content="AxelBase – Fuzzy Similarity Checker" />
+    <meta property="og:description" content="Compare two texts instantly with fuzzy matching – completely private and offline." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="../../AxelLab-Logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    
+		<link href="../../_app/immutable/assets/0.Cc2-KQMX.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/6.DsmZUzF7.css" rel="stylesheet">
+		<link rel="modulepreload" href="../../_app/immutable/entry/start.CEDBot2z.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Dhz8LpAe.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/Kjd7erCy.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/OhTQer22.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/X1jm211d.js">
+		<link rel="modulepreload" href="../../_app/immutable/entry/app.D-yciotx.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DHv6QwYn.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/5uJCp7AU.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DEXc99c3.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/TehEmrgb.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/0.DXPk2-_f.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/ch5BLKea.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/B0D8511z.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CEiWiXqk.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/BNUXq84S.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/DgdDK52b.js">
+		<link rel="modulepreload" href="../../_app/immutable/nodes/6.BJodbh7e.js">
+		<link rel="modulepreload" href="../../_app/immutable/chunks/CaXyZev3.js"><!--1apmzc4--><meta name="description" content="Technical breakdown of the three fuzzy algorithms used in the checker: Ratio (Levenshtein), Partial Ratio, and Token Sort Ratio — with clear examples."/> <meta property="og:title" content="How Ratio, Partial Ratio, and Token Sort Work | AxelBase"/> <meta property="og:description" content="Technical breakdown of the three fuzzy algorithms used in the checker: Ratio (Levenshtein), Partial Ratio, and Token Sort Ratio — with clear examples."/> <meta property="og:url" content="../../blog/posts/post2"/> <meta property="og:type" content="article"/> <meta name="twitter:card" content="summary_large_image"/><!----><title>How Ratio, Partial Ratio, and Token Sort Work | AxelBase</title>
+  </head>
+  <body data-bs-theme="light">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="fixed-top p-3 w-100 svelte-12qhfyh" style="pointer-events: none; z-index: 1040;"><nav class="container glass rounded-pill px-4 py-2 d-flex justify-content-between align-items-center shadow-sm svelte-12qhfyh" style="pointer-events: auto;"><div class="d-flex align-items-center gap-3 svelte-12qhfyh"><a href="../../" class="d-flex align-items-center gap-2 logo-group text-decoration-none svelte-12qhfyh"><div class="logo-wrapper svelte-12qhfyh"><img src="../../AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-brand-logo svelte-12qhfyh"/></div> <span class="fw-bold fs-5 brand-text svelte-12qhfyh">AxelBase</span></a> <div class="position-relative ms-2 d-none d-sm-block svelte-12qhfyh"><button class="btn btn-coffee d-flex align-items-center gap-2 svelte-12qhfyh" aria-label="Support this project"><i class="bi bi-cup-hot-fill coffee-icon svelte-12qhfyh"></i> <span class="d-none d-md-inline svelte-12qhfyh">Buy me a coffee</span></button> <!--[!--><!--]--></div></div> <div class="d-flex align-items-center gap-3 svelte-12qhfyh"><ul class="nav d-none d-lg-flex align-items-center gap-1 m-0 svelte-12qhfyh"><li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../">Home</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#about">About</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#howto">How to</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="../../#faq">FAQ</a></li> <li class="nav-item ms-2 svelte-12qhfyh"><a class="btn btn-primary rounded-pill px-4 fw-semibold svelte-12qhfyh" href="../../blog">Blog</a></li></ul> <button class="btn btn-outline-secondary btn-theme-toggle svelte-12qhfyh" aria-label="Toggle dark mode"><!--[!--><i class="bi bi-moon-stars-fill svelte-12qhfyh"></i><!--]--></button> <button class="navbar-toggler d-lg-none border-0 bg-transparent svelte-12qhfyh" type="button" aria-label="Toggle navigation menu"><i class="bi bi-list fs-2 svelte-12qhfyh" style="color: var(--color-accent);"></i></button></div></nav></header> <main class="flex-grow-1 svelte-12qhfyh"><div class="container container-main mx-auto svelte-12qhfyh"><!--[--><!----><div class="container fade-in post-layout svelte-1apmzc4"><div class="breadcrumbs svelte-1apmzc4"><a href="../../blog" class="svelte-1apmzc4">Blog</a> <span>/</span> <p>How the Three Algorithms Work</p></div> <article class="prose svelte-1apmzc4"><h1 class="svelte-1apmzc4">How Ratio, Partial Ratio, and Token Sort Algorithms Work</h1> <p class="post-meta svelte-1apmzc4">Published: December 2, 2025</p> <p class="svelte-1apmzc4">The AxelBase Fuzzy Similarity Checker shows three different scores because no single algorithm is perfect for every situation. Each method solves a specific type of text variation.</p> <h2 class="svelte-1apmzc4">1. Ratio – Classic Edit Distance</h2> <p class="svelte-1apmzc4">This is based on Levenshtein distance: how many single-character edits (insertions, deletions, substitutions) are needed to turn one string into the other. It treats the entire text as one sequence. Example: "kitten" → "sitting" needs 3 edits, so similarity is 70%. Great when texts are almost identical with small typos.</p> <h2 class="svelte-1apmzc4">2. Partial Ratio – Best Substring Match</h2> <p class="svelte-1apmzc4">Perfect when a shorter string is contained inside a longer one. It finds the best-aligned substring. Example: searching "blast" inside "He had an absolute blast at the party" returns 100%. Extremely useful for detecting banned words hidden in sentences or short usernames inside long comments.</p> <h2 class="svelte-1apmzc4">3. Token Sort Ratio – Word Order Doesn’t Care About Order</h2> <p class="svelte-1apmzc4">This method splits text into words (tokens), sorts them alphabetically, then compares. Example: "The quick brown fox jumps" and "jumps fox brown quick the" both become "brown fox jumps quick the" after sorting, so score 100%. Ideal for comparing sentences where word order changed but meaning stayed the same.</p> <h2 class="svelte-1apmzc4">When to Trust Which Score</h2> <ul class="svelte-1apmzc4"><li>High Ratio → texts are nearly identical (good for duplicate detection)</li> <li>High Partial → short prohibited phrase appears anywhere</li> <li>High Token Sort → same words, different order (paraphrasing)</li></ul> <p class="svelte-1apmzc4">By showing all three scores at once, you can choose the most appropriate one for your use case, or use Average/Highest mode for a balanced view.</p> <p class="italic-note svelte-1apmzc4">Understanding these differences helps you make smarter moderation, search, and data-cleaning decisions.</p></article></div><!----><!--]--></div></main> <footer class="relative glass border-top py-3 mt-5 svelte-12qhfyh" style="z-index: 1030;"><div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted svelte-12qhfyh"><span class="svelte-12qhfyh">© 2025 AxelBase Fuzzy Similarity Checker</span> <div class="d-flex gap-3 mt-1 mt-sm-0 svelte-12qhfyh"><a href="../../privacy" class="footer-link svelte-12qhfyh">Privacy</a> <a href="../../terms" class="footer-link svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1t6cp98 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						assets: "/fuzzy-similarity-checker"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.CEDBot2z.js"),
+						import("../../_app/immutable/entry/app.D-yciotx.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 6],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>

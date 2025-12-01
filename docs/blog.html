@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>AxelBase – Fuzzy Similarity Checker</title>
+    <meta name="description" content="Free, private, instant fuzzy text similarity checker – 100% client-side, no data sent anywhere." />
+    <meta property="og:title" content="AxelBase – Fuzzy Similarity Checker" />
+    <meta property="og:description" content="Compare two texts instantly with fuzzy matching – completely private and offline." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="./AxelLab-Logo.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    
+		<link href="./_app/immutable/assets/0.Cc2-KQMX.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/4.C0ru8xEx.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.CEDBot2z.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Dhz8LpAe.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Kjd7erCy.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/OhTQer22.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/X1jm211d.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.D-yciotx.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DHv6QwYn.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/5uJCp7AU.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DEXc99c3.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/TehEmrgb.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DXPk2-_f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ch5BLKea.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/B0D8511z.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CEiWiXqk.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/BNUXq84S.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/DgdDK52b.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.DjYeMvsz.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/CaXyZev3.js"><!--u4k2t--><meta name="description" content="Technical deep dives, use cases, and best practices for fuzzy text comparison — all 100% client-side and privacy-first."/><!----><title>Blog | AxelBase Fuzzy Similarity Checker</title>
+  </head>
+  <body data-bs-theme="light">
+    <div style="display: contents"><!--[--><!--[--><!----><header class="fixed-top p-3 w-100 svelte-12qhfyh" style="pointer-events: none; z-index: 1040;"><nav class="container glass rounded-pill px-4 py-2 d-flex justify-content-between align-items-center shadow-sm svelte-12qhfyh" style="pointer-events: auto;"><div class="d-flex align-items-center gap-3 svelte-12qhfyh"><a href="./" class="d-flex align-items-center gap-2 logo-group text-decoration-none svelte-12qhfyh"><div class="logo-wrapper svelte-12qhfyh"><img src="./AxelLab-Logo.ico" alt="AxelBase Logo" class="navbar-brand-logo svelte-12qhfyh"/></div> <span class="fw-bold fs-5 brand-text svelte-12qhfyh">AxelBase</span></a> <div class="position-relative ms-2 d-none d-sm-block svelte-12qhfyh"><button class="btn btn-coffee d-flex align-items-center gap-2 svelte-12qhfyh" aria-label="Support this project"><i class="bi bi-cup-hot-fill coffee-icon svelte-12qhfyh"></i> <span class="d-none d-md-inline svelte-12qhfyh">Buy me a coffee</span></button> <!--[!--><!--]--></div></div> <div class="d-flex align-items-center gap-3 svelte-12qhfyh"><ul class="nav d-none d-lg-flex align-items-center gap-1 m-0 svelte-12qhfyh"><li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="./">Home</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="./#about">About</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="./#howto">How to</a></li> <li class="nav-item svelte-12qhfyh"><a class="nav-link-custom svelte-12qhfyh" href="./#faq">FAQ</a></li> <li class="nav-item ms-2 svelte-12qhfyh"><a class="btn btn-primary rounded-pill px-4 fw-semibold svelte-12qhfyh" href="./blog">Blog</a></li></ul> <button class="btn btn-outline-secondary btn-theme-toggle svelte-12qhfyh" aria-label="Toggle dark mode"><!--[!--><i class="bi bi-moon-stars-fill svelte-12qhfyh"></i><!--]--></button> <button class="navbar-toggler d-lg-none border-0 bg-transparent svelte-12qhfyh" type="button" aria-label="Toggle navigation menu"><i class="bi bi-list fs-2 svelte-12qhfyh" style="color: var(--color-accent);"></i></button></div></nav></header> <main class="flex-grow-1 svelte-12qhfyh"><div class="container container-main mx-auto svelte-12qhfyh"><!--[--><!----><div class="container py-5 blog-index svelte-u4k2t"><header class="blog-header text-center mb-5"><h1><i class="bi bi-journal-text"></i> Blog: Fuzzy Insights</h1> <p class="subtitle lead col-lg-8 mx-auto">Technical articles, real-world applications, and deep dives into fuzzy string matching — all focused on privacy, speed, and accuracy.
+      Powered by the open-source <a href="https://github.com/axelbase/fuzzy-similarity-checker" target="_blank" rel="noopener">AxelBase Fuzzy Similarity Checker</a>.</p></header> <div class="posts-grid svelte-u4k2t"><!--[--><a href="./blog/posts/post1" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">What is Fuzzy String Matching?</h2> <p class="post-description text-muted flex-grow-1">An introduction to fuzzy similarity and why exact text matching isn’t enough in real-world applications.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post2" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">How the Ratio, Partial Ratio, and Token Sort Algorithms Work</h2> <p class="post-description text-muted flex-grow-1">Deep dive into the three core algorithms powering this checker — Levenshtein-based, subsequence, and word-order independent matching.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post3" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">When to Use “Average” vs “Highest Score” Mode</h2> <p class="post-description text-muted flex-grow-1">Understanding the difference between conservative (average) and optimistic (max) similarity scoring for different use cases.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post4" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">Detecting Near-Duplicates in Content Moderation</h2> <p class="post-description text-muted flex-grow-1">How content platforms use fuzzy similarity to catch reposted, slightly edited, or paraphrased spam and violations.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post5" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">Comparing User Input Against a Blocklist Securely</h2> <p class="post-description text-muted flex-grow-1">Why client-side fuzzy checking is essential for privacy when validating usernames, comments, or messages against prohibited terms.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post6" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">Measuring Text Similarity in Plagiarism Detection</h2> <p class="post-description text-muted flex-grow-1">Real examples of how educators and platforms use fuzzy matching to identify suspected plagiarism while respecting student privacy.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><a href="./blog/posts/post7" class="card post-card h-100 text-decoration-none border-0 shadow-sm hover-shadow svelte-u4k2t"><div class="card-body d-flex flex-column"><h2 class="post-title h5 fw-bold text-primary mb-3">Performance: 10,000 Characters in Under 100ms</h2> <p class="post-description text-muted flex-grow-1">How modern JavaScript and optimized algorithms make instant fuzzy comparison possible entirely in the browser — with benchmarks.</p> <span class="read-more text-primary fw-semibold mt-2 svelte-u4k2t">Read Article →</span></div></a><!--]--></div></div><!----><!--]--></div></main> <footer class="relative glass border-top py-3 mt-5 svelte-12qhfyh" style="z-index: 1030;"><div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center small text-muted svelte-12qhfyh"><span class="svelte-12qhfyh">© 2025 AxelBase Fuzzy Similarity Checker</span> <div class="d-flex gap-3 mt-1 mt-sm-0 svelte-12qhfyh"><a href="./privacy" class="footer-link svelte-12qhfyh">Privacy</a> <a href="./terms" class="footer-link svelte-12qhfyh">Terms</a></div></div></footer><!----><!--]--> <!--[!--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1t6cp98 = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/fuzzy-similarity-checker"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.CEDBot2z.js"),
+						import("./_app/immutable/entry/app.D-yciotx.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
